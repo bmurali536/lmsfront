@@ -1,0 +1,86 @@
+ /* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* School Section */
+.school {
+    background-image: url(../../image/school.jpg);
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+/* Heading */
+.school h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+}
+
+/* Paragraph */
+.school h2 {
+    text-align: left;
+    font-size: 2.2rem;
+    color: rgb(9, 97, 230);
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: rgb(99, 39, 33);
+    text-shadow:0ic;
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+    .school {
+        padding: 80px 15px;
+        height: 500px;
+    }
+
+    .school h1 {
+        font-size: 2rem;
+    }
+
+    .school h2 {
+        font-size: 1rem;
+    }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 576px) {
+    .school {
+        padding: 60px 10px;
+        height: 400px;
+    }
+
+    .school h1 {
+        font-size: 1.5rem;
+    }
+
+    .school h2 {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 412px) and (max-height: 915px) {
+    .school {
+        height: 350px;
+        background-size: cover;
+        padding: 40px 10px;
+    }
+
+    .school h1 {
+        font-size: 1.2rem;
+    }
+
+    .school ph2{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,81 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  /* Center the form */
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 100px;
+  }
+  
+  /* Form styling */
+  .form-container {
+    background-color: #a1c1e2;
+    padding: 8rem;
+    border-radius: 40px;
+    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    height: 400px;
+    font-size: x-large;
+ 
+    
+  }
+  
+  /* Beautify the form elements */
+  .form-control {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.9rem;
+  }
+  
+  /* Style the buttons */
+  .submit-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 0.95rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link for switching between sign up and sign in */
+  .toggle-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+  }
+  
+  .toggle-link Button {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-link Button:hover {
+    color: #0056b3;
+  }
+  

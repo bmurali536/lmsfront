@@ -1,0 +1,165 @@
+/* General Styles for All Devices */
+.top {
+    background-color: rgb(90, 125, 200);
+    background-size: cover;
+    background-position-y: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.25rem; /* Use rem units for responsive font scaling */
+    width: 100%;
+    color: rgb(255, 255, 255);
+    padding: 20px; /* Add padding for better mobile spacing */
+    position: relative;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.top h2 {
+    font-size: 2rem; /* Increase font size for larger screens */
+    margin: 0 0 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(235, 0, 0, 0.96);
+}
+
+/* Links and Socials Layout */
+.top .links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0px 100px;
+}
+
+.top .links-column {
+    display: grid;
+    gap: 10px;
+    text-align: left;
+}
+
+.top .column2 a {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 2px;
+    width: 300px;
+    
+}
+
+.social_icons_div {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+}
+
+.top .socials {
+    font-size: 1rem;
+    display: block;
+}
+
+/* Hover effects for Social Icons */
+.top .socials > a:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.top a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    text-align: center;
+}
+
+.legal > a {
+    margin-right: 4px;
+}
+
+.legal, 
+.copyright {
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+/* Mobile Styles */
+
+@media (max-width: 832px) {
+    .top {
+        width: 100%; /* Make the width flexible */
+        height: auto; /* Auto height based on content */
+        padding: 15px; /* Reduce padding for better spacing */
+    }
+    
+    .top h2 {
+        font-size: 1.75rem; /* Adjust font size for smaller screens */
+    }
+    
+    .top .links {
+        grid-template-columns: 1fr 1fr; /* Two-column layout for smaller screens */
+        gap: 5px;
+        padding: 0px 50px; /* Reduce padding */
+    }
+    
+    .top .links-column {
+        text-align: center; /* Center content */
+    }
+    
+    .top .socials {
+        font-size: 0.9rem; /* Adjust font size for smaller icons */
+    }
+    
+    .bottom {
+        flex-direction: column; /* Stack footer content */
+    }
+}
+@media (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .top h2 {
+        font-size: 1.75rem; /* Smaller font size for mobile */
+    }
+    
+    .top .links {
+        grid-template-columns: 1fr; /* Single-column layout for mobile */
+        padding: 0px 20px;
+    }
+    
+    .top .socials {
+        text-align: center; /* Center socials on smaller screens */
+    }
+}
+
+/* Extra Small Devices (phones, <400px) */
+@media (max-width: 400px) {
+    .top {
+        padding: 10px;
+        height: auto;
+    }
+    
+    .top h2 {
+        font-size: 1.5rem; /* Smaller font size for very small screens */
+    }
+    
+    .top .links {
+        grid-template-columns: 1fr; /* Keep single-column layout */
+    }
+    
+    .top .links-column {
+        text-align: center; /* Center text on small screens */
+    }
+    
+    .top .socials {
+        font-size: 0.9rem; /* Smaller icon size */
+    }
+    
+    .bottom {
+        flex-direction: column; /* Stack footer content */
+    }
+}

@@ -1,0 +1,161 @@
+ .navbar-container {
+    width: 100%;
+    background-color: #3395a7;
+    padding: 10px 30px;
+    border-bottom: 2px solid #d31212;
+
+  }
+  
+   .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(13, 15, 17);
+  }
+  
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-title {
+    font-size: 1.9rem;
+    color: #f3eded;
+    font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    
+  }
+  
+   .menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu li {
+    list-style: none;
+  }
+  
+  .menu li a {
+    text-decoration: none;
+    color: #f5e8e8;
+    font-size: 1.8rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    margin-left: 20px;
+  }
+  
+  .menu li a:hover {
+    color: #007bff;
+  }
+  
+   .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+  }
+  
+  .bar {
+    width: 35px;
+    height: 3px;
+    background-color: #706565;
+    transition: 0.3s;
+  }
+  
+.services-dropdown .services-link {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* Floating submenu */
+  .floating-submenu {
+    position: absolute;
+    top: 70px;
+    left: 750px;
+    background-color: rgb(240, 227, 227);
+    padding: 10px;
+     display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    z-index: 1000;
+    width: 200px;
+    margin-left: 400px;
+  }
+  
+  .floating-submenu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .floating-submenu li {
+    padding: 20px;
+  }
+  
+  .floating-submenu a {
+    color: #080808;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+   @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+  
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #f8f9fa;
+      flex-direction: column;
+      gap: 10px;
+      width: 200px;
+      padding: 15px;
+      box-shadow:aqua;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .menu.show {
+      transform: translateX(0);
+    }
+  
+    .menu li {
+      padding: 10px 0;
+    }
+  
+    .menu li a {
+      font-size: 1.2rem;
+    }
+    .menu {
+        display: none;
+        flex-direction: column;
+      }
+    
+      .menu.show {
+        display: flex;
+      }
+      .floating-submenu {
+        position: absolute;
+        top: 200px;
+        left: 180px;
+        background-color: rgb(143, 35, 35);
+        padding: 10px;
+         display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        z-index: 1000;
+        width: 200px;
+    }
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+      }
+  }
+  
