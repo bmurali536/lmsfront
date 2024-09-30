@@ -1,4 +1,4 @@
-/* General Styles for All Devices */
+ /* General Styles for All Devices */
 .top {
     background-color: rgb(90, 125, 200);
     background-size: cover;
@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
+    height: 450px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.25rem; /* Use rem units for responsive font scaling */
     width: 100%;
@@ -22,14 +22,18 @@
     font-weight: 800;
     letter-spacing: 1px;
     color: rgba(235, 0, 0, 0.96);
+    
 }
 
 /* Links and Socials Layout */
 .top .links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 50px;
     padding: 0px 100px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    
 }
 
 .top .links-column {

@@ -9,9 +9,9 @@ const Header= () => {
     <header>
     
       <div className="school-name">
-        <h1> School</h1>
+        <h1> COLLEGE</h1>
       </div>
-      
+      S
       <nav>
         <ul>
           <li>

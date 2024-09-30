@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../components/css/principal.css'; // Ensure this file exists
@@ -54,24 +53,7 @@ function Principal() {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand>Authentication App</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              {currentUser ? (
-                <Button onClick={submitLogout} variant="light">Log out</Button>
-              ) : (
-                <Button id="form_btn" onClick={update_form_btn} variant="light">
-                  {registrationToggle ? 'Log in' : 'Register'}
-                </Button>
-              )}
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
+     
       <div className="center">
         {currentUser ? (
           <h2>You're logged in!</h2>
@@ -79,10 +61,10 @@ function Principal() {
           <div className="form-container">
             <Form onSubmit={registrationToggle ? submitRegistration : submitLogin}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>FIRST NAME</Form.Label>
+                <Form.Label>Email id</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="FIRST NAME"
+                  placeholder="Email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />

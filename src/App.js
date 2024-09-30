@@ -8,8 +8,17 @@ import Staff from './components/Staff';
 import Student from './components/Student';
 import About from './components/About';
 import Login from './components/Login';
+import Program from './components/Program';
+import Title from './components/Title';
+import About2 from './components/About2';
+import Campus from './components/Campus';
+import Dashboard from './components/Dashboard';
+import Marks from './components/Marks';
+ // import Attendance from './components/Attendance';
 
-const App = () => {
+
+ 
+ const App = () => {
   return (
     <Router>
       {/* Navbar should be outside of Routes */}
@@ -22,7 +31,19 @@ const App = () => {
         <Route path="/Principal" element={<Principal />} />
         <Route path="/Staff" element={<Staff />} />
         <Route path="/Student" element={<Student />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/marks" element={<Marks />} />
+        {/* <Route path="/attendance" element={<Attendance />} /> */}
+ 
+ 
       </Routes>
+       {/* <div className='container'> 
+      <Title subTitle='Our PROGRAM' title='What WE offer'/>
+      <Program/>  
+      <About2/>
+      <Title subTitle='Gallery' title='Campus Photos'/>
+      <Campus/>
+      </div> */}
       <Footer/>
     </Router>
   );

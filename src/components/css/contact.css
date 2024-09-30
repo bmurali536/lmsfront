@@ -1,0 +1,109 @@
+.contact {
+    margin: 50px auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+    
+    flex-wrap: wrap; /* Ensure responsiveness */
+    gap: 30px; /* Add gap between columns */
+}
+
+.contact-col {
+    flex-basis: 48%;
+    color: #6e5757;
+}
+
+.contact-col h3 {
+    color: #000F38;
+    font-weight: 500;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contact-icon {
+    width: 25px;
+    margin-left: 10px;
+    color: #000F38;
+}
+
+.contact-col p {
+    max-width: 450px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.contact-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-col ul li {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.contact-col1 form {
+    width: 100%;
+}
+
+.contact-col1 form label {
+    font-size: 16px;
+    color: #000F38;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contact-col1 form input, 
+.contact-col1 form textarea {
+    display: block;
+    width: 100%;
+    background: #EBECFE;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 15px;
+    resize: none;
+    font-size: 16px;
+    color: #333;
+ }
+
+.contact-col1 form input:focus, 
+.contact-col1 form textarea:focus {
+    border-color: #000F38;
+}
+
+.contact-col1 form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #000F38;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+.contact-col1 form button:hover {
+    background-color: #333;
+}
+
+.contact-col1 form button img {
+    width: 15px;
+    margin-left: 10px;
+}
+
+.contact-col1 p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #000F38;
+    font-weight: bold;
+}

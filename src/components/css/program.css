@@ -1,0 +1,77 @@
+.programs {
+    margin: 30px auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures it wraps in smaller screen sizes */
+}
+
+.program img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.program {
+    flex-basis: 31%;
+    position: relative;
+}
+
+.caption {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 15, 152, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    padding-top: 70%;
+    transition: 0.4s;
+}
+
+.caption img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.program:hover .caption {
+    opacity: 1;
+    padding-top: 0;
+}
+
+/* Responsive Design for Width 412px and Height 915px */
+@media only screen and (max-width: 412px) {
+    .programs {
+        flex-direction: column; /* Stack programs vertically */
+        align-items: center;
+        width: 100%; /* Adjust width to 100% */
+    }
+
+    .program {
+        flex-basis: 90%; /* Adjust program width for smaller screens */
+        margin-bottom: 20px; /* Add space between programs */
+    }
+
+    .caption {
+        padding-top: 50%; /* Adjust padding for mobile view */
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .caption img {
+        width: 40px; /* Smaller image for mobile */
+        margin-bottom: 5px;
+    }
+
+    .program img {
+        height: auto; /* Ensure the image maintains its aspect ratio */
+        max-height: 300px; /* Set a max height for mobile devices */
+    }
+}

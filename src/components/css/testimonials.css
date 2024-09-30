@@ -1,0 +1,112 @@
+.testimonials {
+    margin: 80px auto;
+    padding: 0 80px;
+    position: relative;
+}
+
+.back-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 15px;
+    width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    background: fixed #212EA0;
+}
+
+.next-btn {
+    right: auto;
+    left: 0;
+}
+
+.slider {
+    overflow: hidden;
+}
+
+.slider ul {
+    display: flex;
+    width: 200%; /* Adjusted to handle 4 items */
+    transition: transform 0.5s ease;
+}
+
+.slider ul li {
+    list-style: none;
+    width: 25%; /* Each slide takes 25% width of the slider container */
+    padding: 30px;
+}
+
+.slide {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    color: #676767;
+    line-height: 2.2;
+}
+
+.slider img {
+    width: 300px;
+}
+
+.slide img {
+    width: 65px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 4px solid #212EA0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.user-info h3 {
+    color: #212EA0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .testimonials {
+        padding: 0 40px;
+    }
+
+    .slider ul li {
+        width: 33.33%; /* Each slide takes 1/3 of the slider container */
+    }
+}
+
+@media (max-width: 900px) {
+    .testimonials {
+        padding: 0 20px;
+    }
+
+    .slider ul li {
+        width: 50%; /* Each slide takes 1/2 of the slider container */
+    }
+
+    .slider img {
+        width: 250px; /* Adjust image size */
+    }
+}
+
+@media (max-width: 600px) {
+    .slider ul li {
+        width: 100%; /* Each slide takes full width */
+    }
+
+    .slider img {
+        width: 200px; /* Further adjust image size */
+    }
+
+    .user-info {
+        flex-direction: column; /* Stack user info for small screens */
+        align-items: flex-start; /* Align to the start */
+    }
+
+    .user-info h3 {
+        font-size: 18px; /* Adjust font size */
+    }
+}

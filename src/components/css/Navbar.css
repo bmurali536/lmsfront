@@ -1,161 +1,205 @@
- .navbar-container {
-    width: 100%;
-    background-color: #3395a7;
-    padding: 10px 30px;
-    border-bottom: 2px solid #d31212;
+ /* General container styling */
+.navbar-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
 
-  }
-  
-   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: rgb(13, 15, 17);
-  }
-  
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(147, 151, 153);
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: #fff;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
 
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-title {
-    font-size: 1.9rem;
-    color: #f3eded;
-    font-weight: 900;
-    line-height: 1.2;
-    text-transform: uppercase;
+/* Logo styling */
+ /* Logo and title container */
+.logo {
+  display: flex;
+  align-items: center;
+}
 
-    
+/* Adjust the size of the logo image */
+.logo img {
+  width: 60px; /* Adjust size here */
+  height: auto; /* Keep aspect ratio */
+  margin-right: 10px; /* Add space between logo and text */
+  border-radius: 10px;
+}
+
+/* Text next to the logo */
+.navbar-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.9em;
+  color: white;
+}
+
+
+.navbar-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.9em;
+  color: white;
+}
+
+/* Menu toggle button (for mobile view) */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* Menu styling */
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.menu li {
+  position: relative;
+  margin-left: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background-color: rgb(190, 192, 219);
+  border: 2px solid #06b374;
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: transform 0.3s ease;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+  color: #a6c8ec;
+}
+
+/* Floating submenu */
+.floating-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 220px;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  margin-left: -90px;
+  margin-top: 10px;
+}
+
+.login-dropdown:hover .floating-submenu {
+  display: block;
+}
+
+.floating-submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.floating-submenu li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.floating-submenu li:last-child {
+  border-bottom: none;
+}
+
+.floating-submenu a {
+  color: #222222;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 10px;
+}
+
+.floating-submenu a:hover {
+  color: #007bff;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 20px;
   }
-  
-   .menu {
+
+  .menu {
+    font-size: 0.9rem;
+  }
+
+  .menu a {
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
     display: flex;
-    gap: 20px;
   }
-  
-  .menu li {
-    list-style: none;
-  }
-  
-  .menu li a {
-    text-decoration: none;
-    color: #f5e8e8;
-    font-size: 1.8rem;
-    font-weight: 500;
-    transition: color 0.3s;
-    margin-left: 20px;
-  }
-  
-  .menu li a:hover {
-    color: #007bff;
-  }
-  
-   .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-  }
-  
-  .bar {
-    width: 35px;
-    height: 3px;
-    background-color: #706565;
-    transition: 0.3s;
-  }
-  
-.services-dropdown .services-link {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  /* Floating submenu */
-  .floating-submenu {
+
+  .menu {
     position: absolute;
-    top: 70px;
-    left: 750px;
-    background-color: rgb(240, 227, 227);
-    padding: 10px;
-     display: flex;
+    top: 60px;
+    right: 0;
+    background-color: #f8f9fa;
     flex-direction: column;
+    gap: 10px;
+    width: 100px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: none;
+  }
+
+  .menu.show {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .menu li {
+    padding: 10px 0;
+  }
+
+  .menu li a {
+    font-size: 1.1rem;
+  }
+
+  .floating-submenu {
+    position: static;
+    display: flex;
     border-radius: 5px;
-    z-index: 1000;
-    width: 200px;
-    margin-left: 400px;
+    width: 100%;
+    margin-left: -290px;
   }
-  
-  .floating-submenu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .floating-submenu li {
-    padding: 20px;
-  }
-  
-  .floating-submenu a {
-    color: #080808;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-   @media (max-width: 768px) {
-    .menu-toggle {
-      display: flex;
-    }
-  
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color: #f8f9fa;
-      flex-direction: column;
-      gap: 10px;
-      width: 200px;
-      padding: 15px;
-      box-shadow:aqua;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-  
-    .menu.show {
-      transform: translateX(0);
-    }
-  
-    .menu li {
-      padding: 10px 0;
-    }
-  
-    .menu li a {
-      font-size: 1.2rem;
-    }
-    .menu {
-        display: none;
-        flex-direction: column;
-      }
-    
-      .menu.show {
-        display: flex;
-      }
-      .floating-submenu {
-        position: absolute;
-        top: 200px;
-        left: 180px;
-        background-color: rgb(143, 35, 35);
-        padding: 10px;
-         display: flex;
-        flex-direction: column;
-        border-radius: 5px;
-        z-index: 1000;
-        width: 200px;
-    }
-  }
-  @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-      }
-  }
-  
+}

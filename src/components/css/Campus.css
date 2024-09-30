@@ -1,0 +1,41 @@
+.campus{
+    margin: 20px auto;
+    width: 90%;
+    text-align: center;
+
+}
+.gallery{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.gallery img{
+    width: 23%;
+    border-radius: 10px;
+}
+.btn{
+    background:#fff;
+    color:#212121;
+    padding:14px 25px;
+    font-size: 16px;
+    border:0;
+    cursor:pointer;
+    outline:0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:30px;
+
+}
+.btb img{
+    width:10px;
+    margin-left: 10px;
+ }
+.btn.dark-btn{
+    background: #212EA0;
+    color:#fff;
+ }
+.btn.dark-btn img{
+    width: 20px;
+}

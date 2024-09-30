@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../components/css/Staff.css'; // Ensure this file exists
 
@@ -54,23 +53,7 @@ function Staff() {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand>Authentication App</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              {currentUser ? (
-                <Button onClick={submitLogout} variant="light">Log out</Button>
-              ) : (
-                <Button id="form_btn" onClick={update_form_btn} variant="light">
-                  {registrationToggle ? 'Log in' : 'Register'}
-                </Button>
-              )}
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+     
 
       <div className="center">
         {currentUser ? (

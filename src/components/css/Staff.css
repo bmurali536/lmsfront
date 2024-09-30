@@ -6,27 +6,38 @@
     height: 40vmin;
     pointer-events: none;
   }
+  .center {
+    padding: 1px;
+    background-color: #a01212;
+    background-image: url('../../image/log.jpg'); 
+    background-size: cover; /* Make the background cover the entire footer */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Ensure the image does not repeat */
+    position: relative;
+}
+
+  
   
   /* Center the form */
   .center {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    margin-bottom: 100px;
+    margin-top: 3px;
+    margin-bottom: 10px;
   }
   
   /* Form styling */
   .form-container {
-    background-color: #a1c1e2;
-    padding: 8rem;
+     padding: 10rem;
     border-radius: 40px;
+    background-color: rgba(250, 246, 215, 0.103);
     box-shadow: 0 6px 40px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    height: 400px;
+    height: 500px;
     font-size: x-large;
- 
+  
     
   }
   
@@ -35,8 +46,8 @@
     width: 100%;
     border-radius: 10px;
     margin-bottom: 1rem;
-    font-size: 20px;
-  }
+    font-size: 30px;
+   }
   
   .button-group {
     display: flex;
@@ -48,7 +59,7 @@
   .submit-btn {
     width: 100%;
     background-color: #007bff;
-    color: white;
+    color: rgb(243, 238, 238);
     padding: 0.95rem;
     border-radius: 8px;
     border: none;
