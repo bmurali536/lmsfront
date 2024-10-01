@@ -1,92 +1,124 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  .center {
-    padding: 1px;
-    background-color: #a01212;
-    background-image: url('../../image/log.jpg'); 
-    background-size: cover; /* Make the background cover the entire footer */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Ensure the image does not repeat */
-    position: relative;
+ /* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
-  
-  
-  /* Center the form */
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3px;
-    margin-bottom: 10px;
+.staff-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.staff-container:hover {
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.login-form, .student-registration-form {
+  text-align: center;
+}
+
+/* Headings */
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button Styles */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.marks-btn, .attendance-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.marks-btn:hover, .attendance-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Add some space between elements */
+button {
+  margin-top: 15px;
+  padding: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .staff-container {
+    padding: 20px;
   }
-  
-  /* Form styling */
-  .form-container {
-     padding: 10rem;
-    border-radius: 40px;
-    background-color: rgba(250, 246, 215, 0.103);
-    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    height: 500px;
-    font-size: x-large;
-  
-    
+
+  .submit-btn, .marks-btn, .attendance-btn {
+    font-size: 14px;
+    padding: 10px;
   }
-  
-  /* Beautify the form elements */
-  .form-control {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    font-size: 30px;
-   }
-  
-  .button-group {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.9rem;
+
+  h2 {
+    font-size: 20px;
   }
-  
-  /* Style the buttons */
-  .submit-btn {
-    width: 100%;
-    background-color: #007bff;
-    color: rgb(243, 238, 238);
-    padding: 0.95rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Link for switching between sign up and sign in */
-  .toggle-link {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-  }
-  
-  .toggle-link Button {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .toggle-link Button:hover {
-    color: #0056b3;
-  }
-  
+}

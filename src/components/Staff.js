@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Container from 'react-bootstrap/Container';
- import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import '../components/css/Staff.css'; // Ensure this file exists
+import { Container, Button, Form } from 'react-bootstrap';
+import '../components/css/Staff.css'; // Ensure the CSS file exists
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8000"
-});
+  baseURL: "http://127.0.0.1:8000/api/getteacher/:"
+}); 
 
 function Staff() {
-  const [currentUser, setCurrentUser] = useState();
-  const [registrationToggle, setRegistrationToggle] = useState(false);
+  const [currentUser, setCurrentUser] = useState(false);
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [studentId, setStudentId] = useState('');
+  const [studentName, setStudentName] = useState('');
+  const [userId, setUserId] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
 
   useEffect(() => {
     client.get("/api/user")
@@ -26,103 +26,135 @@ function Staff() {
       .catch(error => setCurrentUser(false));
   }, []);
 
-  const update_form_btn = () => {
-    setRegistrationToggle(!registrationToggle);
-  };
-
-  const submitRegistration = (e) => {
-    e.preventDefault();
-    client.post("/api/register", { email, username, password })
-      .then(() => {
-        client.post("/api/login", { email, password })
-          .then(() => setCurrentUser(true));
-      });
-  };
-
   const submitLogin = (e) => {
     e.preventDefault();
     client.post("/api/login", { email, password })
       .then(() => setCurrentUser(true));
   };
 
-  const submitLogout = (e) => {
+  const submitStudentRegistration = (e) => {
     e.preventDefault();
-    client.post("/api/logout", { withCredentials: true })
-      .then(() => setCurrentUser(false));
+    const studentData = { studentId, studentName, userId, password, mobileNumber };
+    client.post("/api/register_student", studentData)
+      .then(response => {
+        alert('Student registered successfully');
+      })
+      .catch(error => {
+        console.error('Error during student registration', error);
+      });
+  };
+
+  const goToMarks = () => {
+    // Navigate to marks page
+    console.log('Navigating to marks page');
+  };
+
+  const goToAttendance = () => {
+    // Navigate to attendance page
+    console.log('Navigating to attendance page');
   };
 
   return (
-    <div>
-     
+    <Container className="staff-container">
+      {!currentUser ? (
+        <div className="login-form">
+          <h2>Staff Login</h2>
+          <Form onSubmit={submitLogin}>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-      <div className="center">
-        {currentUser ? (
-          <h2>You're logged in!</h2>
-        ) : (
-          <div className="form-container">
-            <Form onSubmit={registrationToggle ? submitRegistration : submitLogin}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>FIRST NAME</Form.Label>
-                <Form.Control
-                  type="name"
-                  placeholder="Enter name"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>LAST NAME</Form.Label>
-                <Form.Control
-                  type="name"
-                  placeholder="Enter name"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                 
-              </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
+            <Button variant="primary" type="submit" className="submit-btn">
+              Login
+            </Button>
+          </Form>
+        </div>
+      ) : (
+        <div className="student-registration-form">
+          <h2>Add Student Details</h2>
+          <Form onSubmit={submitStudentRegistration}>
+            <Form.Group controlId="formStudentId">
+              <Form.Label>Student ID</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter student ID"
+                value={studentId}
+                onChange={e => setStudentId(e.target.value)}
+              />
+            </Form.Group>
 
-              {registrationToggle && (
-                <Form.Group className="mb-3" controlId="formBasicUsername">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter username"
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
-                  />
-                </Form.Group>
-              )}
+            <Form.Group controlId="formStudentName">
+              <Form.Label>Student Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter student name"
+                value={studentName}
+                onChange={e => setStudentName(e.target.value)}
+              />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                />
-              </Form.Group>
+            <Form.Group controlId="formUserId">
+              <Form.Label>User ID</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter user ID"
+                value={userId}
+                onChange={e => setUserId(e.target.value)}
+              />
+            </Form.Group>
 
-              <div className="button-group">
-                <Button variant="primary" type="submit" className="submit-btn">
-                  {registrationToggle ? 'Register' : 'Sign In'}
-                </Button>
-              </div>
-            </Form>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-            <div className="toggle-link">
-              <Button variant="link" onClick={update_form_btn}>
-                {registrationToggle ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
-              </Button>
-            </div>
+            <Form.Group controlId="formMobileNumber">
+              <Form.Label>Mobile Number</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter mobile number"
+                value={mobileNumber}
+                onChange={e => setMobileNumber(e.target.value)}
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" className="submit-btn">
+              Register Student
+            </Button>
+          </Form>
+
+          <div className="navigation-buttons">
+            <Button variant="secondary" onClick={goToMarks} className="marks-btn">
+              Marks
+            </Button>
+            <Button variant="secondary" onClick={goToAttendance} className="attendance-btn">
+              Attendance
+            </Button>
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </Container>
   );
 }
 
