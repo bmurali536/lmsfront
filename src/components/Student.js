@@ -1,61 +1,78 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // For navigation after login
-import '../components/css/Student.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-const client = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/", // baseURL to your API
-  withCredentials: true // Ensure cookies are sent with the request
-});
-
-function StudentLogin() {
-  const [email, setEmail] = useState('');
+const Student = () => {
+  // Define the state for username and password
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // For showing error message
-  const navigate = useNavigate(); // Use navigate hook for redirection
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Initialize the navigate function
+  const navigate = useNavigate();
 
-    client.post("studentlogin/", { username: email, password: password })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.success) {
-          // Redirect to student dashboard or another route on success
-          navigate("/student-dashboard");
-        } else {
-          setErrorMessage("Invalid credentials, please try again.");
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the page from refreshing
+
+    try {
+      // Send a POST request to the Django API
+      const response = await axios.post('http://127.0.0.1:8000/api/studentlogin/', {
+        username: username,
+        password: password,
+      }, {
+        withCredentials: true, // Required for sending cookies and session credentials
+        headers: {
+          'Content-Type': 'application/json',
         }
-      })
-      .catch((err) => {
-        console.error(err);
-        setErrorMessage("Login failed. Please try again.");
       });
+
+      // Handle successful login
+      console.log(response.data);
+      alert('Login successful!');
+
+      // Redirect to the dashboard or another page
+      navigate('/Marks/attendancce'); // Navigate to /dashboard route after login
+    } catch (err) {
+      // Handle error, e.g., 404, 500, etc.
+      console.error('Error during login:', err);
+      setError('Login failed. Please check your credentials and try again.');
+    }
   };
 
   return (
-    <div className="login-container">
+    <div className="student-login">
       <h2>Student Login</h2>
+
+      {error && <p className="error-message">{error}</p>}
+
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+
         <button type="submit">Login</button>
-        {errorMessage && <p className="error">{errorMessage}</p>}
       </form>
     </div>
   );
-}
+};
 
-export default StudentLogin;
+export default Student;

@@ -1,161 +1,73 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, Button, Form } from 'react-bootstrap';
-import '../components/css/Staff.css'; // Ensure the CSS file exists
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-axios.defaults.withCredentials = true;
-
-const client = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/getteacher/:"
-}); 
-
-function Staff() {
-  const [currentUser, setCurrentUser] = useState(false);
-  const [email, setEmail] = useState('');
+const Staff = () => {
+  // Define the state for username and password
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [studentId, setStudentId] = useState('');
-  const [studentName, setStudentName] = useState('');
-  const [userId, setUserId] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    client.get("/api/user")
-      .then(res => setCurrentUser(true))
-      .catch(error => setCurrentUser(false));
-  }, []);
+  // Initialize the navigate function
+  const navigate = useNavigate();
 
-  const submitLogin = (e) => {
-    e.preventDefault();
-    client.post("/api/login", { email, password })
-      .then(() => setCurrentUser(true));
-  };
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the page from refreshing
 
-  const submitStudentRegistration = (e) => {
-    e.preventDefault();
-    const studentData = { studentId, studentName, userId, password, mobileNumber };
-    client.post("/api/register_student", studentData)
-      .then(response => {
-        alert('Student registered successfully');
-      })
-      .catch(error => {
-        console.error('Error during student registration', error);
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/teacherlogin/', {
+          username: username,
+          password: password,
+      }, {
+          withCredentials: true,
+          headers: {
+              'Content-Type': 'application/json',
+          }
       });
-  };
-
-  const goToMarks = () => {
-    // Navigate to marks page
-    console.log('Navigating to marks page');
-  };
-
-  const goToAttendance = () => {
-    // Navigate to attendance page
-    console.log('Navigating to attendance page');
+  
+      console.log(response.data); // Log response for debugging
+      alert('Login successful!');
+      navigate('/Marks/attendancce');
+  } catch (err) {
+      console.error('Error during login:', err.response ? err.response.data : err.message);
+      setError('Login failed. Please check your credentials and try again.');
+  }
+  
   };
 
   return (
-    <Container className="staff-container">
-      {!currentUser ? (
-        <div className="login-form">
-          <h2>Staff Login</h2>
-          <Form onSubmit={submitLogin}>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </Form.Group>
+    <div className="student-login">
+      <h2>Teacher Login</h2>
 
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </Form.Group>
+      {error && <p className="error-message">{error}</p>}
 
-            <Button variant="primary" type="submit" className="submit-btn">
-              Login
-            </Button>
-          </Form>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
-      ) : (
-        <div className="student-registration-form">
-          <h2>Add Student Details</h2>
-          <Form onSubmit={submitStudentRegistration}>
-            <Form.Group controlId="formStudentId">
-              <Form.Label>Student ID</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter student ID"
-                value={studentId}
-                onChange={e => setStudentId(e.target.value)}
-              />
-            </Form.Group>
 
-            <Form.Group controlId="formStudentName">
-              <Form.Label>Student Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter student name"
-                value={studentName}
-                onChange={e => setStudentName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formUserId">
-              <Form.Label>User ID</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter user ID"
-                value={userId}
-                onChange={e => setUserId(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formMobileNumber">
-              <Form.Label>Mobile Number</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter mobile number"
-                value={mobileNumber}
-                onChange={e => setMobileNumber(e.target.value)}
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit" className="submit-btn">
-              Register Student
-            </Button>
-          </Form>
-
-          <div className="navigation-buttons">
-            <Button variant="secondary" onClick={goToMarks} className="marks-btn">
-              Marks
-            </Button>
-            <Button variant="secondary" onClick={goToAttendance} className="attendance-btn">
-              Attendance
-            </Button>
-          </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-      )}
-    </Container>
+
+        <button type="submit">Login</button>
+      </form>    </div>
   );
-}
+};
 
 export default Staff;

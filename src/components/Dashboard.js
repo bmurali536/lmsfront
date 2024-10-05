@@ -1,27 +1,32 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './css/Dashboard.css'; 
+import '../components/css/Staff.css';
 
-const Dashboard = () => {
-  const navigate = useNavigate();
+function Dashboard() {
+  const navigate = useNavigate(); // Replacing useHistory with useNavigate
 
-  const handleMarksClick = () => {
-    navigate('/marks');
+  const handleAddStudent = () => {
+    navigate('/staff/add-student'); // Using navigate instead of history.push
   };
 
-  const handleAttendanceClick = () => {
-    navigate('/attendance');
+  const handleViewMarks = () => {
+    navigate('/staff/marks');
+  };
+
+  const handleViewAttendance = () => {
+    navigate('/staff/attendance');
   };
 
   return (
     <div className="dashboard-container">
-      <h2>Welcome to the Student Dashboard</h2>
-      <div className="button-group">
-        <button className="btn btn-primary" onClick={handleMarksClick}>View Marks</button>
-        <button className="btn btn-secondary" onClick={handleAttendanceClick}>View Attendance</button>
+      <h2>Staff Dashboard</h2>
+      <div className="dashboard-options">
+        <button onClick={handleAddStudent}>Add Student</button>
+        <button onClick={handleViewMarks}>Marks</button>
+        <button onClick={handleViewAttendance}>Attendance</button>
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;
